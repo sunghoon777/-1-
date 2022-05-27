@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "470003992656",
+    "project_id": "foodtruck-1f3cb",
+    "storage_bucket": "foodtruck-1f3cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470003992656:android:b4dd7eb5c2c880436da955",
+        "android_client_info": {
+          "package_name": "org.techtown.foodtruck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470003992656-8ig472gnpmh7als78asqajeu97bmrqbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbQvcMC0BYzgKM1Mvzl--68GdpK2c_cr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470003992656-8ig472gnpmh7als78asqajeu97bmrqbr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
