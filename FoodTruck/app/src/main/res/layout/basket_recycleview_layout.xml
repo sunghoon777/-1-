@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/basket_recyclerView_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="@font/myfont3"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/basket_recyclerView_textview2"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="@font/myfont3"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/basket_recyclerView_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/recycleview_ripple"
+            android:src="@drawable/close"
+            />
+
+        <LinearLayout
+            android:layout_width="105dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:background="@drawable/order_bar2">
+            <ImageView
+                android:id="@+id/basket_recyclerView_imageview2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginRight="20dp"
+                android:clickable="true"
+                android:contentDescription="minus"
+                android:focusable="true"
+                app:srcCompat="@drawable/minus"
+                android:background="@drawable/recycleview_ripple"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/basket_recyclerView_textview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="top"
+                android:layout_marginBottom="3dp"
+                android:fontFamily="@font/myfont2"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/basket_recyclerView_imageview3"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/recycleview_ripple"
+                android:clickable="true"
+                android:contentDescription="plus"
+                android:focusable="true"
+                app:srcCompat="@drawable/plus" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

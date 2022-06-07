@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.234" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/account_circle.xml" value="0.238" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/button_ripple.xml" value="0.245" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/change_bg.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/circle_button_bg.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/default_bg.xml" value="0.235" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/detailed_menu_bg.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/favorite.xml" value="0.238" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.238" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/login_key.xml" value="0.238" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/order_bar.xml" value="0.2315" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/order_bar2.xml" value="0.203" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/recycleview_ripple.xml" value="0.245" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/ripple.xml" value="0.245" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/signup_textbox.xml" value="0.246" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/text_box_bg.xml" value="0.121" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/top_tab_bg.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/drawable/yellow_bar.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/font/foodtruckfont.xml" value="0.11574074074074074" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/account_cardview_layout.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_account_manage.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_account_management.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_account_manager.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_bascket.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_basket.xml" value="0.31197771587743733" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_customer_support.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_detailed_truck_menu.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_find_password.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_food_detailed.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_introductory.xml" value="0.3283514492753623" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_login.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_notice.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_notice_content.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_signup.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_sssssss.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/activity_truck_list.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/asdasdd.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/basket_recycleview_layout.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/cardimage_layout.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/content_customer_support.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/detailed_truck_menu_recycleview_layout.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/food_search_tab_item.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/fragment_account.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/fragment_featured.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/fragment_first.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/fragment_map.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/fragment_order.xml" value="0.1" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/fragment_search.xml" value="0.28969359331476324" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/fragment_truck_menu_fragment.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/fragment_truck_review_fragment.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/notice_recyvleview_layout.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/layout/truck_list_recycleview_layout.xml" value="0.31567028985507245" />
+        <entry key="..\:/Users/sungh/AndroidStudioProjects/FoodTruck/app/src/main/res/menu/menu_bottom.xml" value="0.3463541666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
