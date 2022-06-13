@@ -1,8 +1,9 @@
 package org.techtown.foodtruck.DO;
 
-public class Order {
+import java.io.Serializable;
 
-    private Truck truck;
+public class Order implements Serializable {
+
     private String food_name;
     private String food_cost;
     private int food_number;
@@ -10,20 +11,12 @@ public class Order {
     public Order() {
     }
 
-    public Order(Truck truck, String food_name, String food_cost, int food_number) {
-        this.truck = truck;
+    public Order(String food_name, String food_cost, int food_number) {
         this.food_name = food_name;
         this.food_cost = food_cost;
         this.food_number = food_number;
     }
 
-    public Truck getTruck() {
-        return truck;
-    }
-
-    public void setTruck(Truck truck) {
-        this.truck = truck;
-    }
 
     public String getFood_name() {
         return food_name;

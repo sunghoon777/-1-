@@ -8,7 +8,6 @@ public class Food implements Serializable {
     private  String image;
     private String content;
 
-
     public Food(){
 
     }

@@ -1,6 +1,7 @@
 package org.techtown.foodtruck.account;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -74,53 +75,51 @@ public class Account extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(rootView.getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         AccountAdapter accountAdapter = new AccountAdapter();
-        Image image1= new Image(container.getResources().getDrawable(R.drawable.heart_icon), "즐겨찾기");
-        Image image2= new Image(container.getResources().getDrawable(R.drawable.profile_icon), "내 계정");
-        Image image3= new Image(container.getResources().getDrawable(R.drawable.logout_icon), "로그아웃");
-        Image image4= new Image(container.getResources().getDrawable(R.drawable.review_icon), "내 리뷰");
-        Image image5= new Image(container.getResources().getDrawable(R.drawable.notify_icon), "공지사항");
-        Image image6= new Image(container.getResources().getDrawable(R.drawable.call_icon), "고객 지원");
+        Image image1= new Image(container.getResources().getDrawable(R.drawable.profile_icon), "내 계정");
+        Image image2= new Image(container.getResources().getDrawable(R.drawable.logout_icon), "로그아웃");
+        Image image3= new Image(container.getResources().getDrawable(R.drawable.review_icon), "내 리뷰");
+        Image image4= new Image(container.getResources().getDrawable(R.drawable.notify_icon), "공지사항");
+        Image image5= new Image(container.getResources().getDrawable(R.drawable.call_icon), "고객 지원");
         accountAdapter.addItem(image1);
         accountAdapter.addItem(image2);
         accountAdapter.addItem(image3);
         accountAdapter.addItem(image4);
         accountAdapter.addItem(image5);
-        accountAdapter.addItem(image6);
         recyclerView.setAdapter(accountAdapter);
 
         //리스너 설정
         accountAdapter.setOnItemClickListener(new OnAccountItemClickListener() {
             @Override
             public void onItemClick(AccountAdapter.ViewHolder holder, View view, int position) {
-                //즐겨찾기
-                if(position == 0){
-
-                }
                 //내 계정
-                else if(position == 1){
+                if(position == 0){
                     Intent intent = new Intent(rootView.getContext(), AccountManagementActivity.class);
                     intent.putExtra("UserAccount",account);
                     startActivity(intent);
                 }
                 //로그아웃
-                else if(position == 2){
+                else if(position == 1){
                     FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(rootView.getContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     Toast.makeText(rootView.getContext(), "로그아웃하셨습니다.", Toast.LENGTH_SHORT).show();
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("order",getActivity().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.clear();
+                    editor.commit();
                     startActivity(intent);
                 }
                 //내 리뷰
-                else if(position == 3){
+                else if(position == 2){
 
                 }
                 //공지사항
-                else if(position == 4){
+                else if(position == 3){
                     Intent intent = new Intent(rootView.getContext(), NoticeActivity.class);
                     startActivity(intent);
                 }
                 //고객지원
-                else if(position ==5){
+                else if(position ==4){
 
                 }
             }

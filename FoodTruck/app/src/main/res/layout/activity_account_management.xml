@@ -70,6 +70,21 @@
         android:inputType="textPassword"
         android:padding="12sp" />
 
+    <EditText
+        android:id="@+id/account_manager_phoneNumber"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/signup_textbox"
+        android:drawableLeft="@drawable/ic_baseline_local_phone_24"
+        android:drawablePadding="15dp"
+        android:ems="10"
+        android:hint="전화번호"
+        android:maxLength="13"
+        android:inputType="phone"
+        android:padding="12sp" />
+
     <Button
         android:id="@+id/account_change_button"
         android:layout_width="328dp"

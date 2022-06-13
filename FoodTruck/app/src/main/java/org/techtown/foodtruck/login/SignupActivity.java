@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -56,6 +57,7 @@ public class SignupActivity extends AppCompatActivity {
         //사용자가 이메일 형식으로 적지 않으면 글자를 빨간색으로
         signupEmail = findViewById(R.id.signupEmail);
         signupEmail.addTextChangedListener(emailWatcher);
+        ((EditText) findViewById(R.id.signupPhoneNumber)).addTextChangedListener(new PhoneNumberFormattingTextWatcher());
     }
 
     //signUp리스너
@@ -100,11 +102,12 @@ public class SignupActivity extends AppCompatActivity {
         String email = ((TextView)findViewById(R.id.signupEmail)).getText().toString();
         String password =((TextView)findViewById(R.id.signupPassword)).getText().toString();
         String password_check =((TextView)findViewById(R.id.signupPassword_check)).getText().toString();
+        String phoneNumber = ((TextView)findViewById(R.id.signupPhoneNumber)).getText().toString();
         Pattern pattern = android.util.Patterns.EMAIL_ADDRESS;
         //이메일 형식이 맞는지
         //패스워드 이메일이 길이가 0인지 확인
         if(pattern.matcher(email).matches()){
-            if(email.length() != 0 && password.length() != 0 && password_check.length() != 0){
+            if(email.length() != 0 && password.length() != 0 && password_check.length() != 0 && phoneNumber.length() != 0){
                 if(password.equals(password_check)){
                     mAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -119,6 +122,7 @@ public class SignupActivity extends AppCompatActivity {
                                         account.setEmail(user.getEmail());
                                         account.setPassword(password);
                                         account.setName(name);
+                                        account.setPhoneNumber(phoneNumber);
                                         //setValue insert임
                                         databaseReference.child("UserAccount").child(user.getUid()).setValue(account);
                                         Toast.makeText(SignupActivity.this, "회원가입완료", Toast.LENGTH_SHORT).show();

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,21 +24,25 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.techtown.foodtruck.DO.Favorite;
 import org.techtown.foodtruck.DO.Food;
 import org.techtown.foodtruck.DO.Image;
 import org.techtown.foodtruck.DO.Location;
 import org.techtown.foodtruck.DO.Truck;
+import org.techtown.foodtruck.DO.UserAccount;
 import org.techtown.foodtruck.R;
 import org.techtown.foodtruck.login.LoginActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -50,6 +55,10 @@ public class Truck_menu extends Fragment {
     TextView textView;
     ImageView imageView;
     FirebaseAuth auth;
+    DatabaseReference FavoriteDatabase;
+    FirebaseUser user;
+    Boolean favoriteCheck = false;
+    DatabaseReference favorite_data;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,8 +72,7 @@ public class Truck_menu extends Fragment {
         textView = rootView.findViewById(R.id.truck_menu_fragment_textview);
         convertLocationToAddress();
         //지도 아이콘 클릭시 지도 보여주기
-        imageView = rootView.findViewById(R.id.truck_menu_fragment_imageview);
-        showMap();
+        imageView = rootView.findViewById(R.id.truck_menu_fragment_favorite);
         //리싸이클뷰 설정
         //로그인 인증을 위한 객체 생성
         auth = FirebaseAuth.getInstance();
@@ -88,16 +96,6 @@ public class Truck_menu extends Fragment {
         textView.setText(address+" (트럭위치로부터 "+distance+"km)");
     }
 
-    //맵보여주기
-    private void showMap(){
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-    }
-
     private void setRecycleView(ViewGroup rootView){
         RecyclerView recyclerView = rootView.findViewById(R.id.fragment_truck_menu_recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
@@ -113,7 +111,42 @@ public class Truck_menu extends Fragment {
                     Food food = dataSnapshot.getValue(Food.class);
                     items.add(food);
                 }
-                truckMenuAdapter.notifyDataSetChanged();
+                user = auth.getCurrentUser();
+                if(user != null){
+                    FavoriteDatabase = FirebaseDatabase.getInstance().getReference("FoodTruck").child("UserAccount").child(user.getUid()).child("favorites");
+                    FavoriteDatabase.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                for(DataSnapshot dataSnapshot :snapshot.getChildren()){
+                                    Favorite favorite = dataSnapshot.getValue(Favorite.class);
+                                    if(favorite.getTruckId().equals(truck.getId())){
+                                        favorite_data = dataSnapshot.getRef();
+                                        imageView.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                        favoriteCheck = true;
+                                        break;
+                                    }
+                                }
+                                if(favoriteCheck == false){
+                                    imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24_false);
+                                }
+                            }
+                            else{
+                                imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24_false);
+                            }
+                            truckMenuAdapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+                else{
+                    truckMenuAdapter.notifyDataSetChanged();
+                    imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24_false);
+                }
             }
 
             @Override
@@ -135,6 +168,28 @@ public class Truck_menu extends Fragment {
                     intent.putExtra("Truck",truck);
                     startActivity(intent);
                 }
+            }
+        });
+        //즐겨찾기 클릭 리스너 설정
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if(user == null){
+                   Intent intent = new Intent(getContext(), LoginActivity.class);
+                   startActivity(intent);
+               }
+               else{
+                   //즐겨찾기가 되있을때
+                   if(favoriteCheck == true){
+                       favoriteCheck = false;
+                       favorite_data.removeValue();
+                   }
+                   //즐겨찾기가 안되있을떄
+                   else{
+                       favoriteCheck = true;
+                       FavoriteDatabase.push().setValue(new Favorite(truck.getName(), truck.getId()));
+                   }
+               }
             }
         });
     }

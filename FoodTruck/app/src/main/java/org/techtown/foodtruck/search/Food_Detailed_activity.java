@@ -99,7 +99,7 @@ public class Food_Detailed_activity extends AppCompatActivity {
                     ArrayList<Order> order_list;
                     order_list = gson.fromJson(data,listType);
                     Order order = new Order();
-                    order.setTruck(truck);
+
                     order.setFood_cost(food.getCost());
                     order.setFood_name(food.getName());
                     order.setFood_number(order_number);
@@ -112,7 +112,6 @@ public class Food_Detailed_activity extends AppCompatActivity {
                 }
                 else{
                     Order order = new Order();
-                    order.setTruck(truck);
                     order.setFood_cost(food.getCost());
                     order.setFood_name(food.getName());
                     order.setFood_number(order_number);

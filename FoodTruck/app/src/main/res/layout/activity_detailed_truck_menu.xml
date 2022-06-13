@@ -49,6 +49,16 @@
             app:tabTextColor="#BEBEBE" />
     </com.google.android.material.appbar.AppBarLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fragment_truck_menu_reviewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#00B2EE"
+        android:src="@drawable/ic_baseline_comment_24"
+        app:fabSize="normal" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fragment_truck_menu_floatButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +68,6 @@
         android:backgroundTint="#00B2EE"
         android:src="@drawable/ic_baseline_shopping_cart_24"
         app:fabSize="normal" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

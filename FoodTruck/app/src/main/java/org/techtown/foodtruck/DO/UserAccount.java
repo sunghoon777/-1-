@@ -1,14 +1,18 @@
 package org.techtown.foodtruck.DO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class UserAccount implements Serializable {
     private String idToken; // firebase 고유아이디 key값
     private String email; // 아이디
     private String password; // 패스워드
     private String name; // 이름
+    private String phoneNumber;
+    private ArrayList<Favorite> favorites;
 
     public UserAccount() {
+
     }
 
     public String getEmail() {
@@ -43,4 +47,11 @@ public class UserAccount implements Serializable {
         this.name = name;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

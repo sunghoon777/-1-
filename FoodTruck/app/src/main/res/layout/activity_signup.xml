@@ -75,6 +75,21 @@
         android:inputType="textPassword"
         android:padding="12sp" />
 
+    <EditText
+        android:id="@+id/signupPhoneNumber"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:drawableLeft="@drawable/ic_baseline_local_phone_24"
+        android:drawablePadding="15dp"
+        android:background="@drawable/signup_textbox"
+        android:ems="10"
+        android:hint="전화번호 입력"
+        android:maxLength="13"
+        android:inputType="phone"
+        android:padding="12sp" />
+
     <Button
         android:id="@+id/signup_commit_button"
         android:layout_width="328dp"
@@ -84,5 +99,4 @@
         android:text="회원가입"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
-
 </LinearLayout>

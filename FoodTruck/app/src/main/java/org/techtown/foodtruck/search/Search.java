@@ -7,9 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import org.techtown.foodtruck.DO.Image;
 import org.techtown.foodtruck.R;
@@ -66,6 +71,15 @@ public class Search extends Fragment {
                 String content = image.getContent();
                 Intent intent = new Intent(view.getContext(), TruckListActivity.class);
                 intent.putExtra("content",content);
+                startActivity(intent);
+            }
+        });
+        TextView textView = rootView.findViewById(R.id.search_text);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),RetrieveActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
         });

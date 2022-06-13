@@ -3,6 +3,7 @@ package org.techtown.foodtruck.account;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,7 @@ public class AccountManagementActivity extends AppCompatActivity {
     TextView account_manager_email;
     EditText account_manager_name;
     EditText account_manager_password;
+    EditText account_manager_phoneNumber;
     Button account_change_button;
     UserAccount userAccount;
     static final String TAG = "CHANGE ACCOUNT_DATA";
@@ -46,9 +48,12 @@ public class AccountManagementActivity extends AppCompatActivity {
         account_manager_email = findViewById(R.id.account_manager_email);
         account_manager_name = findViewById(R.id.account_manager_name);
         account_manager_password = findViewById(R.id.account_manager_password);
+        account_manager_phoneNumber = findViewById(R.id.account_manager_phoneNumber);
+        account_manager_phoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         account_manager_email.setText(userAccount.getEmail());
         account_manager_name.setText(userAccount.getName());
         account_manager_password.setText(userAccount.getPassword());
+        account_manager_phoneNumber.setText(userAccount.getPhoneNumber());
         account_change_button = findViewById(R.id.account_change_button);
         account_change_button.setOnClickListener(listener);
         //FirebaseAuth 인스턴스를 초기화,
@@ -67,6 +72,7 @@ public class AccountManagementActivity extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
                 String newPassword = account_manager_password.getText().toString();
                 String newName = account_manager_name.getText().toString();
+                String newPhoneNumber = account_manager_phoneNumber.getText().toString();
                 //인증 비밀번호 업데이트
                 user.updatePassword(newPassword)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -84,6 +90,7 @@ public class AccountManagementActivity extends AppCompatActivity {
                 HashMap hashMap = new HashMap();
                 hashMap.put("password",newPassword);
                 hashMap.put("name",newName);
+                hashMap.put("phoneNumber",newPhoneNumber);
                 databaseReference.child("UserAccount").child(user.getUid()).updateChildren(hashMap);
                 finish();
             }

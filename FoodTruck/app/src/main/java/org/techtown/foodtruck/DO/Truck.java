@@ -15,6 +15,7 @@ public class Truck implements Serializable{
     private String rate;
     private String title;
     private String type;
+    private String wait_time;
     private double distance;
 
 
@@ -112,6 +113,14 @@ public class Truck implements Serializable{
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    public String getWait_time() {
+        return wait_time;
+    }
+
+    public void setWait_time(String wait_time) {
+        this.wait_time = wait_time;
     }
 
     @NonNull
