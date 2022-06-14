@@ -46,11 +46,6 @@
             android:name=".account.NoticeContentActivity"
             android:exported="false" />
         <activity
-            android:name=".account.CustomerSupportActivity"
-            android:exported="false"
-            android:label="@string/title_activity_customer_support"
-            android:theme="@style/Theme.FoodTruck.NoActionBar" />
-        <activity
             android:name=".account.NoticeActivity"
             android:exported="false" />
         <activity

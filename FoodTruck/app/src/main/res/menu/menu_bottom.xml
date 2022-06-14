@@ -19,7 +19,7 @@
         android:fontFamily="@font/myfont3"
         />
     <item
-        android:id="@+id/featured_tab"
+        android:id="@+id/favorite_tab"
         android:title="즐겨찾기"
         app:showAsAction="always"
         android:icon="@drawable/favorite"

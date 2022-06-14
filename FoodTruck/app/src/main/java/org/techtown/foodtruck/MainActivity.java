@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             bottomNavigationView.setSelectedItemId(R.id.map_tab);
         }
         else if(flag == 1){
-            bottomNavigationView.setSelectedItemId(R.id.featured_tab);
+            bottomNavigationView.setSelectedItemId(R.id.favorite_tab);
         }
         else if(flag == 2){
             bottomNavigationView.setSelectedItemId(R.id.search_tab);
@@ -105,7 +105,11 @@ public class MainActivity extends AppCompatActivity {
                     fragmentManager.beginTransaction().replace(R.id.container,map).commit();
                     return true;
                 }
-                else if(id == R.id.featured_tab){
+                else if(id == R.id.search_tab){
+                    fragmentManager.beginTransaction().replace(R.id.container,search).commit();
+                    return true;
+                }
+                else if(id == R.id.favorite_tab){
                     if(auth.getCurrentUser() == null){
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
@@ -115,10 +119,6 @@ public class MainActivity extends AppCompatActivity {
                         fragmentManager.beginTransaction().replace(R.id.container,favorite_fragment).commit();
                         return true;
                     }
-                }
-                else if(id == R.id.search_tab){
-                    fragmentManager.beginTransaction().replace(R.id.container,search).commit();
-                    return true;
                 }
                 else if(id == R.id.order_tab){
                     if(auth.getCurrentUser() == null){

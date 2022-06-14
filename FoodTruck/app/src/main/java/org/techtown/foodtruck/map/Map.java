@@ -2,10 +2,16 @@ package org.techtown.foodtruck.map;
 
 
 import android.Manifest;
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -16,6 +22,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +32,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -37,8 +48,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -47,32 +60,49 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.maps.android.SphericalUtil;
+import com.google.maps.android.clustering.Cluster;
+import com.google.maps.android.clustering.ClusterManager;
 
 
+import org.techtown.foodtruck.DO.Notice;
 import org.techtown.foodtruck.DO.Truck;
 import org.techtown.foodtruck.R;
+import org.w3c.dom.Text;
+
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-public class Map extends Fragment implements OnMapReadyCallback {
+import kotlin.jvm.internal.Intrinsics;
+
+public class Map extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private FragmentActivity mContext;
+    RecyclerView recyclerView;
+    TruckViewAdapter truckViewAdapter;
+    Location truck_location;
+    double distance;
+
 
     private static final String TAG = Map.class.getSimpleName();
     private GoogleMap mMap;
     private MapView mapView = null;
     private Marker currentMarker = null;
+    private ArrayList<Truck> items;
+    Truck truck;
 
     // The entry point to the Fused Location Provider.
     private FusedLocationProviderClient mFusedLocationProviderClient; //
     private LocationRequest locationRequest;
     private Location mCurrentLocation;
 
-    private final LatLng mDefaultLocation = new LatLng(37.49797, 127.02763);
+    private final LatLng mDefaultLocation = new LatLng(37.3216, 127.1268);
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
@@ -86,10 +116,66 @@ public class Map extends Fragment implements OnMapReadyCallback {
     //search 때 필요한 경도 위도를 담는 변수
     double latitude;
     double longitude;
-    DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
+    private Object GoogleMap;
 
     public Map() {
     }
+
+    private void setRecycleView(ViewGroup View) {
+        mMap = (com.google.android.gms.maps.GoogleMap) GoogleMap;
+        RecyclerView recyclerView = View.findViewById(R.id.truck_info_viewpager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        TruckViewAdapter truckViewAdapter = new TruckViewAdapter(getContext(),items);
+        recyclerView.setHasFixedSize(true);
+        databaseReference = FirebaseDatabase.getInstance().getReference("FoodTruck").child("Truck");
+        items = new ArrayList<>();
+        truck_location = new Location("");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Truck truck = dataSnapshot.getValue(Truck.class);
+                    items.add(truck);
+
+                }
+                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(@NonNull Marker marker) {
+                        LatLng markerPosition = marker.getPosition();;
+                        int selected_marker = -1;
+                        double d = markerPosition.latitude;
+                        double o = markerPosition.longitude;
+                        String lat = Double.toString(d);
+                        String lon = Double.toString(o);
+                        for (int i = 0; i < items.size(); i++) {
+                            if (lat.equals(items.get(i).getLocation().getLatitude()) && lon.equals(items.get(i).getLocation().getLongitude())) {
+                                selected_marker = i;
+                            }
+                        }
+
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(markerPosition).zoom(12).build();
+                        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                        recyclerView.smoothScrollToPosition(selected_marker);
+                        return false;
+                    }
+                });
+                truckViewAdapter.notifyDataSetChanged();
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+        truckViewAdapter.setItem(items);
+        recyclerView.setAdapter(truckViewAdapter);
+    }
+
 
 
     @Override
@@ -101,30 +187,50 @@ public class Map extends Fragment implements OnMapReadyCallback {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // 초기화 해야 하는 리소스들을 여기서 초기화 해준다.
     }
+
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         // Layout 을 inflate 하는 곳이다.
+
         if (savedInstanceState != null) {
             mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             CameraPosition mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
         View layout = inflater.inflate(R.layout.fragment_map, container, false);
         mapView = (MapView) layout.findViewById(R.id.mapFragment);
+
         if (mapView != null) {
             mapView.onCreate(savedInstanceState);
         }
+
         mapView.getMapAsync(this);
+        setRecycleView((ViewGroup) layout);
         return layout;
+
     }
+
+    public static void drawCircle(GoogleMap map, LatLng latLng) {
+        CircleOptions circleOptions = new CircleOptions();
+        circleOptions.center(latLng);
+        circleOptions.radius(500);
+        circleOptions.strokeColor(Color.BLACK);
+        circleOptions.fillColor(0x220000FF);
+        circleOptions.strokeWidth(5);
+        map.addCircle(circleOptions);
+    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         // Fragement에서의 OnCreateView를 마치고, Activity에서 onCreate()가 호출되고 나서 호출되는 메소드
         // Activity와 Fragment의 뷰가 모두 생성된 상태로, View를 변경하는 작업이 가능한 단계
+
         super.onActivityCreated(savedInstanceState);
         //액티비티가 처음 생성될 때 실행되는 함수
         MapsInitializer.initialize(mContext);
@@ -149,9 +255,13 @@ public class Map extends Fragment implements OnMapReadyCallback {
         mapView.onSaveInstanceState(outState);
     }
 
+
+
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
 
         setDefaultLocation(); // GPS를 찾지 못하는 장소에 있을 경우 지도의 초기 위치가 필요
 
@@ -161,25 +271,49 @@ public class Map extends Fragment implements OnMapReadyCallback {
 
         getDeviceLocation();
 
+
+
         databaseReference =  FirebaseDatabase.getInstance().getReference("FoodTruck").child("Truck");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Truck truck = dataSnapshot.getValue(Truck.class);
-                    LatLng latLng = new LatLng(Double.parseDouble(truck.getLocation().getLatitude()),Double.parseDouble(truck.getLocation().getLongitude()));
-                    MarkerOptions markerOptions = new MarkerOptions();
-                    markerOptions.position(latLng);
-                    mMap.addMarker(markerOptions);
+                    String name = truck.getName();
+                    String id = truck.getId();
+                    setMarker(truck);
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
+
+
     }
+
+    private void setMarker(Truck truck) {
+        int height = 120;
+        int width = 120;
+        BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.truck_mark);
+        Bitmap b=bitmapdraw.getBitmap();
+        Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+        LatLng latLng = new LatLng(Double.parseDouble(truck.getLocation().getLatitude()),Double.parseDouble(truck.getLocation().getLongitude()));
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title(truck.getName());
+        Marker Marker = mMap.addMarker(markerOptions);
+        Marker.setSnippet(truck.getType());
+        Marker.setIcon(BitmapDescriptorFactory.fromBitmap(smallMarker));
+
+    }
+
+
+
 
     private void updateLocationUI() {
         if (mMap == null) {
@@ -200,13 +334,13 @@ public class Map extends Fragment implements OnMapReadyCallback {
         }
     }
 
+
     private void setDefaultLocation() {
         if (currentMarker != null) currentMarker.remove();
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(mDefaultLocation);
         markerOptions.title("위치정보 가져올 수 없음");
-        markerOptions.snippet("위치 퍼미션과 GPS 활성 여부 확인하세요");
         markerOptions.draggable(true);
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         currentMarker = mMap.addMarker(markerOptions);
@@ -252,11 +386,13 @@ public class Map extends Fragment implements OnMapReadyCallback {
 
             List<Location> locationList = locationResult.getLocations();
 
+
             if (locationList.size() > 0) {
                 Location location = locationList.get(locationList.size() - 1);
 
                 LatLng currentPosition
                         = new LatLng(location.getLatitude(), location.getLongitude());
+
 
                 String markerTitle = getCurrentAddress(currentPosition);
                 String markerSnippet = "위도:" + String.valueOf(location.getLatitude())
@@ -267,6 +403,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
                 //현재 위치에 마커 생성하고 이동
                 setCurrentLocation(location, markerTitle, markerSnippet);
                 mCurrentLocation = location;
+
             }
         }
 
@@ -292,6 +429,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         markerOptions.draggable(true);
 
         currentMarker = mMap.addMarker(markerOptions);
+        drawCircle(mMap,currentLatLng);
 
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(currentLatLng);
         mMap.moveCamera(cameraUpdate);
@@ -417,4 +555,23 @@ public class Map extends Fragment implements OnMapReadyCallback {
         mapView.onDestroy();
     }
 
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        LatLng markerPosition = marker.getPosition();
+        int selected_marker = -1;
+        double d = markerPosition.latitude;
+        double o = markerPosition.longitude;
+        String lat = Double.toString(d);
+        String lon = Double.toString(o);
+        for (int i = 0; i < items.size(); i++) {
+            if (lat.equals(items.get(i).getLocation().getLatitude()) && lon.equals(items.get(i).getLocation().getLongitude())) {
+                selected_marker = i;
+            }
+        }
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(markerPosition).zoom(12).build();
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        truckViewAdapter.notifyDataSetChanged();
+        recyclerView.smoothScrollToPosition(selected_marker);
+        return false;
+    }
 }
