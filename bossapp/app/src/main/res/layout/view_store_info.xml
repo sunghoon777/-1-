@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="50dp">
+
+    <TextView
+        android:id="@+id/storeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="44dp"
+        android:text="상호명"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/input_storeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#000000"
+        android:ems="7"
+        android:inputType="text"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeName"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="주소"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/storeName"
+        app:layout_constraintTop_toBottomOf="@+id/input_userName" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_address"
+        tools:context=".view.InfoActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_address_number"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/textview_round_rectangle_background"
+                android:enabled="false"
+                android:hint="우편번호"
+                android:inputType="number"
+                android:paddingStart="5dp"
+                android:textColor="#000000"
+                android:textColorHint="#CDCDCD"
+                android:textSize="16sp"
+                tools:ignore="Autofill" />
+
+            <Button
+                android:id="@+id/btn_location"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_round_rectangle_background"
+                android:outlineSpotShadowColor="#000000"
+                android:text="주소 검색"
+                android:textColor="#000000"
+                tools:ignore="UnusedAttribute" />
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_round_rectangle_background"
+            android:enabled="false"
+            android:hint="주소1"
+            android:paddingStart="5dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textColor="#000000"
+            android:textColorHint="#CDCDCD"
+            android:textSize="16sp"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/et_address_detail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/textview_round_rectangle_background"
+            android:hint="도로명 주소2"
+            android:inputType="text"
+            android:paddingStart="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#CDCDCD"
+            android:textSize="16sp"
+            tools:ignore="Autofill" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="점주명"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/storeName"
+        app:layout_constraintTop_toBottomOf="@+id/input_storeName" />
+
+
+    <EditText
+        android:id="@+id/input_userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#000000"
+        android:ems="7"
+        android:inputType="text"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
+        tools:ignore="Autofill" />
+
+
+
+
+
+    <TextView
+        android:id="@+id/tv_categoty_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:text="카테고리"
+        android:textColor="#000000"
+        android:layout_marginTop="25dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/storeName"
+        app:layout_constraintTop_toBottomOf="@+id/ll_address" />
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_categoty_info">
+        <RadioGroup
+            android:id="@+id/radio_group_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#000000">
+            <RadioButton
+                android:id="@+id/rbtn_korean_food"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#000000"
+                android:text="한식"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/rbtn_bunsik"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#000000"
+                android:text="분식"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <RadioButton
+                android:id="@+id/rbtn_cafe_dessert"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#000000"
+                android:text="디저트"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <RadioButton
+                android:id="@+id/rbtn_japanese_food"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#00b2ce"
+                android:text="일식"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <RadioButton
+                android:id="@+id/rbtn_chicken"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#000000"
+                android:text="치킨"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <RadioButton
+                android:id="@+id/rbtn_pizza"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#000000"
+                android:text="피자"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <RadioButton
+                android:id="@+id/rbtn_asian"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#000000"
+                android:text="아시안"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <RadioButton
+                android:id="@+id/rbtn_jokbal_bossam"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#000000"
+                android:text="족발"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+            <RadioButton
+                android:id="@+id/rbtn_fast_food"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:buttonTint="#000000"
+                android:text="패스트푸드"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:text="평균 대기시간"
+        android:textColor="#000000"
+        android:layout_marginTop="25dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/storeName"
+        app:layout_constraintTop_toBottomOf="@+id/ll_radiogroup" />
+
+    <LinearLayout
+        android:id="@+id/ll_time_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/storeName"
+        app:layout_constraintTop_toBottomOf="@+id/tv_time"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="포장주문 대기시간"
+                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+            <EditText
+                android:id="@+id/input_take_out_time"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#000000"
+                android:layout_marginStart="20dp"
+                android:inputType="number"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/storeName"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="분"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                android:layout_marginLeft="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
