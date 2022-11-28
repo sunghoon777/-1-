@@ -17,7 +17,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/favorite_recycleView_truckImage"
+            android:id="@+id/favorite_recycleView_truck_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginRight="5dp"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/favorite_recycleView_truckName"
+                    android:id="@+id/favorite_recycleView_truck_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

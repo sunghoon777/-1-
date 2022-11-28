@@ -36,9 +36,9 @@ public class ApproveOrderFragment extends Fragment {
     private FirebaseUser user;
     //StoreAccount
     private StoreAccount myAccount;
-    ArrayList<Order_history> orderHistoryList;
+    private ArrayList<Order_history> orderHistoryList;
     //수락대기중인 주문 횟수 텍스트뷰
-    TextView orderCount;
+    private TextView orderCount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

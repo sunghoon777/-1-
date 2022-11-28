@@ -108,6 +108,11 @@ public class DetailedTruckMenuActivity extends AppCompatActivity {
         //전 액티비티에서 intent를 받아온다
         Intent intent = getIntent();
         truck = (Truck) intent.getSerializableExtra("Truck");
+        //트럭 상태가 1 닫혀있는 상태이면 볼수없음.
+        if(truck.getVendor_status().equals("1")){
+            Toast.makeText(getApplicationContext(),"오픈 시간이 아닙니다",Toast.LENGTH_SHORT).show();
+            finish();
+        }
         truckImage = findViewById(R.id.activity_detailed_truck_menu_truck_image);
         truckName1 = findViewById(R.id.activity_detailed_truck_menu_truck_name);
         //대표 이미지 , 푸드트럭명 설정

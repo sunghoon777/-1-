@@ -21,9 +21,9 @@ import java.util.ArrayList;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
 
-    ArrayList<Truck> items = new ArrayList<Truck>();
-    onFavoriteItemClickListener listener;
-    Context context;
+    private ArrayList<Truck> items = new ArrayList<Truck>();
+    private onFavoriteItemClickListener listener;
+    private Context context;
 
     public FavoriteAdapter(Context context) {
         this.context = context;
@@ -48,19 +48,19 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView imageView;
-        TextView textView;
-        TextView textView2;
-        TextView textView3;
-        TextView textView4;
+        ImageView truckImage;
+        TextView truckName;
+        TextView rate;
+        TextView orderCount;
+        TextView waitTime;
         
         public ViewHolder(@NonNull View itemView, onFavoriteItemClickListener listener) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.favorite_recycleView_truckImage);
-            textView = itemView.findViewById(R.id.favorite_recycleView_truckName);
-            textView2 = itemView.findViewById(R.id.favorite_recycleView_rate);
-            textView3 = itemView.findViewById(R.id.favorite_recycleView_order_count);
-            textView4 = itemView.findViewById(R.id.favorite_recycleView_wait_time);
+            truckImage = itemView.findViewById(R.id.favorite_recycleView_truck_image);
+            truckName = itemView.findViewById(R.id.favorite_recycleView_truck_name);
+            rate = itemView.findViewById(R.id.favorite_recycleView_rate);
+            orderCount = itemView.findViewById(R.id.favorite_recycleView_order_count);
+            waitTime = itemView.findViewById(R.id.favorite_recycleView_wait_time);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,11 +73,11 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
         public void setItem(Truck truck){
             DecimalFormat f = new DecimalFormat("#.##");
-            Glide.with(context).load(truck.getImage()).into(imageView);
-            textView.setText(truck.getName());
-            textView2.setText(f.format(Float.parseFloat(truck.getRate()))+"   "+f.format(truck.getDistance()/1000)+"km"+"  ");
-            textView3.setText("  "+truck.getOrder_count());
-            textView4.setText(truck.getWait_time()+"분");
+            Glide.with(context).load(truck.getImage()).into(truckImage);
+            truckName.setText(truck.getName());
+            rate.setText(f.format(Float.parseFloat(truck.getRate()))+"   "+f.format(truck.getDistance()/1000)+"km"+"  ");
+            orderCount.setText("  "+truck.getOrder_count());
+            waitTime.setText(truck.getWait_time()+"분");
         }
     }
 

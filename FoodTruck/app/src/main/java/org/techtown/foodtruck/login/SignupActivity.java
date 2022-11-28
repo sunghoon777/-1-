@@ -35,10 +35,8 @@ public class SignupActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth; //파이어페이스 인증
     private DatabaseReference databaseReference; //파이어베이스 실시간 데이터베이스
-
-    EditText signupEmail;
-    EditText signupPhone_number;
-    Button button;
+    private EditText signupEmail;
+    private Button commitButton;
     static final String TAG = "SIGN UP";
 
 
@@ -52,8 +50,8 @@ public class SignupActivity extends AppCompatActivity {
         //FirebaseAuth 인스턴스를 초기화
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("FoodTruck");
-        button = findViewById(R.id.signup_commit_button);
-        button.setOnClickListener(signupClickListener);
+        commitButton = findViewById(R.id.signup_commit_button);
+        commitButton.setOnClickListener(signupClickListener);
         //사용자가 이메일 형식으로 적지 않으면 글자를 빨간색으로
         signupEmail = findViewById(R.id.signupEmail);
         signupEmail.addTextChangedListener(emailWatcher);

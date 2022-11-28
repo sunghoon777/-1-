@@ -31,10 +31,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth; //파이어페이스 인증
     private DatabaseReference databaseReference; //파이어베이스 실시간 데이터베이스
-    static final String TAG = "SIGN IN";
-    Button loginButton;
-    Button signupButton;
-    Button findLoginPasswordButton;
+    private static final String TAG = "SIGN IN";
+    private Button loginButton;
+    private Button signupButton;
+    private Button findLoginPasswordButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

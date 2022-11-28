@@ -23,14 +23,27 @@
             android:name=".login.FindPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".home.TruckManageActivity"
-            android:exported="false" />
-        <activity
             android:name=".account.AccountManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".home.EditTruckInfoActivity"
+            android:name=".home.AddMenuActivity"
             android:exported="false" />
+        <activity
+            android:name=".home.EditMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.TruckNoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.MenuManageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.ReviewManageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.FullPicActivity"
+            android:exported="false" />
+
         <activity
             android:name=".account.NoticeContentActivity"
             android:exported="false" />
@@ -42,6 +55,9 @@
             android:exported="false" />
         <activity
             android:name=".account.FestivalContentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account.AlarmActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -61,6 +77,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver
+            android:name=".account.AlertReceiver"
+            android:enabled="true"
+            android:exported="false"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -19,9 +19,33 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="radi">
+        <item name="cornerSize">10dp
+        </item>
+    </style>
+
+    <style name="Widget.Theme.BossApp.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.Theme.BossApp.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="ThemeOverlay.BossApp.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
+
     <style name="CalendarWidgetWeekDay" parent="Theme.AppCompat.NoActionBar">
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">#808080</item>
+    </style>
+
+    <style name="Progressbar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#818181</item>
+        <item name="colorControlActivated">#00b2ce</item>
     </style>
 
     <style name="Theme.BossApp.NoActionBar">

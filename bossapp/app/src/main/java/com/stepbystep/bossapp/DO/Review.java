@@ -1,15 +1,14 @@
 package com.stepbystep.bossapp.DO;
 
-import java.util.ArrayList;
 
 public class Review {
 
-    String user_idToken;
-    String date;
-    String comment;
-    String image;
-    String rate;
-    String userName;
+    private String user_idToken;
+    private String date;
+    private String comment;
+    private String image;
+    private String rate;
+    private String userName;
 
     public Review() {
     }

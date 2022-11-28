@@ -70,11 +70,9 @@ public class Calculatesales {
                                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {  //반복문으로 리스트를 출력함
                                         Order_history order_history = snapshot1.getValue(Order_history.class); // 객체에 데이터를 담는다
                                         order_histories.add(order_history);
-                                         //System.out.println("메롱" + order_histories);// 여기서 add 를 했음
                                         System.out.println(truck_id);
-                                        if(order_history.getTruck_id().equals(truck_id)){
+                                        if(order_history.getTruck_id().equals(truck_id) && order_history.getOrderState().equals("완료")){
                                             my_order_histories.add(order_history);
-                                            System.out.println("잘되나" +my_order_histories);
                                             LocalDateTime date = StringtoDate.changetodata(order_history.getDate());
                                             System.out.println(date.getMonthValue());
 
@@ -195,9 +193,6 @@ public class Calculatesales {
                 Log.e("Calculatesales", String.valueOf(error.toException()));
             }
         });
-        System.out.println("씨이빨"+userAccounts+"\n"+order_histories);
-
-
         return sales;
     }
 

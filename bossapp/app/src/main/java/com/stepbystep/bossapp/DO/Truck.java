@@ -8,6 +8,8 @@ public class Truck implements Serializable{
 
     private String id;
     private String image;
+    private String sigimage;
+    private Location location;
     private String owner_name;
     private String name;
     private String open_date;
@@ -22,9 +24,11 @@ public class Truck implements Serializable{
     public Truck() {
     }
 
-    public Truck(String id, String image, String owner_name, String name, String open_date, String order_count, String rate, String title, String type, double distance) {
+    public Truck(String id, String image, String sigimage, Location location, String owner_name, String name, String open_date, String order_count, String rate, String title, String type, double distance) {
         this.id = id;
         this.image = image;
+        this.sigimage = sigimage;
+        this.location = location;
         this.owner_name = owner_name;
         this.name = name;
         this.open_date = open_date;
@@ -49,6 +53,22 @@ public class Truck implements Serializable{
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getSigImage() {
+        return sigimage;
+    }
+
+    public void setSigImage(String sigimage) {
+        this.sigimage = sigimage;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getOwner_name() {

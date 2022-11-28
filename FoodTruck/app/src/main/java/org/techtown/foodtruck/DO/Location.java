@@ -6,8 +6,8 @@ import java.io.Serializable;
 
 public class Location implements Serializable {
 
-    String latitude;
-    String longitude;
+    private String latitude;
+    private String longitude;
 
     public Location() {
     }

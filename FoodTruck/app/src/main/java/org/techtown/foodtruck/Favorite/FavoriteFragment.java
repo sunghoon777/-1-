@@ -35,28 +35,27 @@ import java.util.ArrayList;
 public class FavoriteFragment extends Fragment {
 
     //트럭 아이템들을 담는 리스트 변수
-    ArrayList<Truck> items;
+    private ArrayList<Truck> items;
     //파이어베이스 데이터를 받아오기위한 변수
     //트럭 데이터
-    DatabaseReference truckData;
+    private DatabaseReference truckData;
     //즐겨찾기 데이터
-    DatabaseReference favoriteData;
+    private DatabaseReference favoriteData;
     //파이어 베이스 인증을 위한 변수
-    FirebaseAuth auth;
+    private FirebaseAuth auth;
     //현재 파이어베이스 유저를 위한 변수
-    FirebaseUser user;
-    SimpleDateFormat dateFormat;
-    ArrayList<DataSnapshot> favorites = new ArrayList<>();
+    private FirebaseUser user;
+    private ArrayList<DataSnapshot> favorites = new ArrayList<>();
     //전 액티비티에서 받아온 위도 경도를 받아오기 위한 변수
-    Double latitude;
-    Double longitude;
+    private Double latitude;
+    private Double longitude;
     //자기 자신의 위치와 트럭의 위치를 저장하기 위한 변수
-    android.location.Location my_location;
-    android.location.Location truck_location;
+    private android.location.Location my_location;
+    private android.location.Location truck_location;
     //자기 자신의 위치와 트럭의 위치 사이의 거리를 저장하기 위한 변수
-    double distance;
+    private double distance;
     //즐겨찾기 총 개수 저장 변수
-    int sum = 0;
+    private int sum = 0;
     
 
     @Override

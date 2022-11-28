@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 public class OrderHistory implements Serializable {
 
-    String orderHistoryId;
-    String truckName;
-    ArrayList<Order> orders;
-    String date;
-    String image;
-    String truckId;
-    String userId;
-    String orderState;
+    private String orderHistoryId;
+    private String truckName;
+    private ArrayList<Order> orders;
+    private String date;
+    private String image;
+    private String truckId;
+    private String userId;
+    private String orderState;
 
     public OrderHistory() {
     }

@@ -5,19 +5,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.techtown.foodtruck.DO.Image;
 import org.techtown.foodtruck.R;
-
 import java.util.ArrayList;
 
 public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHolder> {
 
-    ArrayList<Image> items = new ArrayList<Image>();
-    OnAccountItemClickListener listener;
+    private ArrayList<Image> items = new ArrayList<Image>();
+    private OnAccountItemClickListener listener;
 
     @NonNull
     @Override
@@ -39,13 +36,13 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
-        ImageView imageView;
+        TextView accountName;
+        ImageView accountImage;
 
         public ViewHolder(@NonNull View itemView, final OnAccountItemClickListener listener) {
             super(itemView);
-            textView = itemView.findViewById(R.id.account_cardView_layout_textVeiw);
-            imageView = itemView.findViewById(R.id.account_cardView_layout_imageView);
+            accountImage = itemView.findViewById(R.id.account_cardView_layout_account_image);
+            accountName = itemView.findViewById(R.id.account_cardView_layout_account_name);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -58,8 +55,8 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
         }
 
         public void setItem(Image item){
-            textView.setText(item.getContent());
-            imageView.setImageDrawable(item.getDrawable());
+            accountName.setText(item.getContent());
+            accountImage.setImageDrawable(item.getDrawable());
         }
     }
 

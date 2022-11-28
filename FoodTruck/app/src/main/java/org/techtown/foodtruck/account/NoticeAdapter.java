@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder> {
 
-    ArrayList<Notice> items = new ArrayList<Notice>();
-    OnNoticeItemClickListener listener;
+    private ArrayList<Notice> items = new ArrayList<Notice>();
+    private OnNoticeItemClickListener listener;
 
     @NonNull
     @Override

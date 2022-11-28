@@ -88,6 +88,7 @@ public class MapFragment extends Fragment {
         if(my_location == null){
             my_location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             flag = 1;
+            //내 위치를 결국 못불러오면 기본 위치로 설정
             if (my_location == null){
                 my_location = new Location("my_location");
                 my_location.setLatitude(37.56667);
@@ -203,12 +204,12 @@ public class MapFragment extends Fragment {
                             truck_location.setLongitude(Double.parseDouble(truck.getLocation().getLongitude()));
                             truck_location.setLatitude(Double.parseDouble(truck.getLocation().getLatitude()));
                             distance = my_location.distanceTo(truck_location);
-                            //자기와 5km 이내인것만 표시
-                            if(distance <5*1000){
+                            //자기와 5km 이내인것만 표시, 트럭도 오픈 상태(0)여야함
+                            if(distance <5*1000 && truck.getVendor_status().equals("0")){
                                 setMarker(truck);
+                                truck.setDistance(distance);
+                                mapAdapter.addItem(truck);
                             }
-                            truck.setDistance(distance);
-                            mapAdapter.addItem(truck);
                         }
                         mapAdapter.notifyDataSetChanged();
                     }
@@ -264,7 +265,6 @@ public class MapFragment extends Fragment {
         }catch (Exception e){
 
         }
-
     }
 
     //자기 자신 위치 리스너 설정

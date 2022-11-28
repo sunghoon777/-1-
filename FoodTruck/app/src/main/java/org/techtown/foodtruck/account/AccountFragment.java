@@ -32,9 +32,9 @@ public class AccountFragment extends Fragment {
 
     private FirebaseUser mAuth; //파이어페이스 유저
     private DatabaseReference databaseReference; //파이어베이스 실시간 데이터베이스
-    TextView textView_name;
-    TextView textView_email;
-    UserAccount account;
+    private TextView userName;
+    private TextView userEmail;
+    private UserAccount account;
 
 
     
@@ -46,8 +46,8 @@ public class AccountFragment extends Fragment {
         //리싸이클뷰 설정
         setRecycleView(rootView, container);
         //데이터베이스, 유저 받아오기
-        textView_name = rootView.findViewById(R.id.fragment_account_textView_name);
-        textView_email = rootView.findViewById(R.id.fragment_account_textView_email);
+        userName = rootView.findViewById(R.id.fragment_account_user_name);
+        userEmail = rootView.findViewById(R.id.fragment_account_user_email);
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("FoodTruck").child("UserAccount").child(mAuth.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -57,8 +57,8 @@ public class AccountFragment extends Fragment {
                     account = (UserAccount)snapshot.getValue(UserAccount.class);
                     String name = account.getName();
                     String email = account.getEmail();
-                    textView_name.setText(name);
-                    textView_email.setText(email);
+                    userName.setText(name);
+                    userEmail.setText(email);
                 }
             }
 

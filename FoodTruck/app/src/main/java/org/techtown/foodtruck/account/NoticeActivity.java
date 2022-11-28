@@ -27,8 +27,8 @@ public class NoticeActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReference; //파이어베이스 실시간 데이터베이스
     private ArrayList<Notice> arrayList;
-    int count = 0;
-    NoticeAdapter noticeAdapter;
+    private int count = 0;
+    private NoticeAdapter noticeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

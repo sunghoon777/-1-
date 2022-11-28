@@ -2,14 +2,12 @@ package com.stepbystep.bossapp.chart;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,17 +29,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.stepbystep.bossapp.DO.Order;
 import com.stepbystep.bossapp.DO.Order_history;
 import com.stepbystep.bossapp.DO.StoreAccount;
-import com.stepbystep.bossapp.DO.UserAccount;
 import com.stepbystep.bossapp.R;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -154,6 +148,8 @@ public class DayChartFragment extends Fragment {
                   public void onDataChange(@NonNull DataSnapshot snapshot) {
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {  //반복문으로 리스트를 출력함
                       Order_history order_history = snapshot1.getValue(Order_history.class); // 객체에 데이터를 담는다
+                      if(!(order_history.getOrderState().equals("완료")))
+                        continue;
                       order_histories.add(order_history);
                       LocalDateTime date = StringtoDate.changetodata(order_history.getDate());
                       LocalDate order_date = date.toLocalDate();

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,14 +20,14 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
 
     @NonNull
     @Override
-    public NoticeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.notice_recycleview_layout,parent,false);
-        return new NoticeAdapter.ViewHolder(itemView, listener);
+        return new ViewHolder(itemView, listener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoticeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //set item
         Notice notice = items.get(position);
         holder.setItem(notice);
@@ -50,7 +51,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     if(listener != null){
-                        listener.onItemClick(NoticeAdapter.ViewHolder.this,v,position);
+                        listener.onItemClick(ViewHolder.this,v,position);
                     }
                 }
             });

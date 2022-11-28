@@ -54,7 +54,7 @@
                             android:layout_weight="2"
                             android:fontFamily="@font/myfont2"
                             android:includeFontPadding="false"
-                            android:text="영업 임시중지"
+                            android:text="영업 시작"
                             android:textColor="@color/black"
                             android:textSize="30dp"
                             android:textStyle="bold" />
@@ -66,8 +66,8 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginEnd="25dp"
                             android:layout_weight="1"
-                            android:checked="false"
-                            android:gravity="right"
+                            android:checked="true"
+                            android:minHeight="48dp"
                             android:textOff="임시중지 해제"
                             android:textOn="임시중지" />
 

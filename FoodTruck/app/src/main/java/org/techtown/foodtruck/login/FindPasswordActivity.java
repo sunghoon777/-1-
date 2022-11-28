@@ -20,9 +20,9 @@ import org.techtown.foodtruck.R;
 
 public class FindPasswordActivity extends AppCompatActivity {
 
-    Button button;
-    EditText editText;
-    static final String TAG = "Find Password";
+    private Button findPasswordButton;
+    private EditText emailBox;
+    private static final String TAG = "Find Password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +31,16 @@ public class FindPasswordActivity extends AppCompatActivity {
         ActionBar abar = getSupportActionBar();
         abar.hide();
         setContentView(R.layout.activity_find_password);
-        button = findViewById(R.id.activity_find_password_button);
-        editText = findViewById(R.id.activity_find_password_editText);
-        button.setOnClickListener(listener);
+        findPasswordButton = findViewById(R.id.activity_find_password_button);
+        emailBox = findViewById(R.id.activity_find_password_email_box);
+        findPasswordButton.setOnClickListener(listener);
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             FirebaseAuth auth = FirebaseAuth.getInstance();
-            String emailAddress = editText.getText().toString();
+            String emailAddress = emailBox.getText().toString();
             auth.sendPasswordResetEmail(emailAddress)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

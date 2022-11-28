@@ -27,13 +27,13 @@ public class AccountManagementActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth; //파이어페이스 인증
     private DatabaseReference databaseReference; //파이어베이스 실시간 데이터베이스
-    TextView account_manager_email;
-    EditText account_manager_name;
-    EditText account_manager_password;
-    EditText account_manager_phoneNumber;
-    Button account_change_button;
-    UserAccount userAccount;
-    static final String TAG = "CHANGE ACCOUNT_DATA";
+    private TextView account_manager_email;
+    private EditText account_manager_name;
+    private EditText account_manager_password;
+    private EditText account_manager_phoneNumber;
+    private Button account_change_button;
+    private UserAccount userAccount;
+    private static final String TAG = "CHANGE ACCOUNT_DATA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

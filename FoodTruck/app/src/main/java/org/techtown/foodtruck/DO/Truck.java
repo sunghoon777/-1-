@@ -16,13 +16,14 @@ public class Truck implements Serializable{
     private String title;
     private String type;
     private String wait_time;
+    private String vendor_status;
     private double distance;
 
 
     public Truck() {
     }
 
-    public Truck(String id, String image, Location location, String name, String open_date, String order_count, String rate, String title, String type, double distance) {
+    public Truck(String id, String image, Location location, String name, String open_date, String order_count, String rate, String title, String type, String wait_time, String vendor_status, double distance) {
         this.id = id;
         this.image = image;
         this.location = location;
@@ -32,6 +33,8 @@ public class Truck implements Serializable{
         this.rate = rate;
         this.title = title;
         this.type = type;
+        this.wait_time = wait_time;
+        this.vendor_status = vendor_status;
         this.distance = distance;
     }
 
@@ -121,6 +124,14 @@ public class Truck implements Serializable{
 
     public void setWait_time(String wait_time) {
         this.wait_time = wait_time;
+    }
+
+    public String getVendor_status() {
+        return vendor_status;
+    }
+
+    public void setVendor_status(String vendor_status) {
+        this.vendor_status = vendor_status;
     }
 
     @NonNull

@@ -191,6 +191,9 @@ public class TruckListActivity extends AppCompatActivity {
                 items.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Truck truck = dataSnapshot.getValue(Truck.class);
+                    //트럭 상태가 1 닫혀있는 상태이면 결과에 포함 안됨
+                    if(truck.getVendor_status().equals("1"))
+                        continue;
                     //푸드트럭 위치 자기 자신위치 비교
                     truck_location.setLongitude(Double.parseDouble(truck.getLocation().getLongitude()));
                     truck_location.setLatitude(Double.parseDouble(truck.getLocation().getLatitude()));

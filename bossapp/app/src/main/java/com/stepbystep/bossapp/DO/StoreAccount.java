@@ -1,7 +1,6 @@
 package com.stepbystep.bossapp.DO;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class StoreAccount implements Serializable {
     private String idToken; // firebase 고유아이디 key값
@@ -10,6 +9,16 @@ public class StoreAccount implements Serializable {
     private String name; // 이름
     private String phoneNumber;
     private String truckId;
+    private String vendor_status;
+    private String vendor_notice;
+
+    public String getVendor_notice() {
+        return vendor_notice;
+    }
+
+    public void setVendor_notice(String vendor_notice) {
+        this.vendor_notice = vendor_notice;
+    }
 
     public StoreAccount() {
 
@@ -61,5 +70,13 @@ public class StoreAccount implements Serializable {
 
     public void setTruckId(String truckId) {
         this.truckId = truckId;
+    }
+
+    public String getVendor_status() {
+        return vendor_status;
+    }
+
+    public void setVendor_status(String vendor_status) {
+        this.vendor_status = vendor_status;
     }
 }

@@ -34,9 +34,9 @@ public class ProcessOrderFragment extends Fragment {
     private FirebaseUser user;
     //StoreAccount
     private StoreAccount myAccount;
-    ArrayList<Order_history> orderHistoryList;
+    private ArrayList<Order_history> orderHistoryList;
     //진행중인 주문 횟수 텍스트뷰
-    TextView orderCount;
+    private TextView orderCount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class ProcessOrderFragment extends Fragment {
         Gson gson = new GsonBuilder().create();
         String data = storeAccountData.getString("StoreAccount","");
         if(!(data.equals("") || data == null)){
-            myAccount = gson.fromJson(data,StoreAccount.class);
+            myAccount = gson.fromJson(data, StoreAccount.class);
             orderHistoryDatabase =  FirebaseDatabase.getInstance().getReference("FoodTruck").child("OrderHistory");
             orderHistoryList = new ArrayList<Order_history>();
             orderCount = rootView.findViewById(R.id.fragment_process_order_order_count);

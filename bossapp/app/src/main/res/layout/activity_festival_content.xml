@@ -28,17 +28,18 @@
             android:id="@+id/activity_festival_content_title2"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textColor="#000000"
-            android:textSize="24sp"
-            android:fontFamily="@font/myfont2"
+            android:textSize="15sp"
+            android:fontFamily="@font/myfont3"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_gravity="center">
             <Button
@@ -47,15 +48,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="알림설정"
-                android:textColor="#000000"
-                android:fontFamily="@font/myfont2"
-                android:background="@drawable/border"/>
-            <Button
-                android:id="@+id/noti_modify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="알림수정"
                 android:textColor="#000000"
                 android:fontFamily="@font/myfont2"
                 android:background="@drawable/border"/>

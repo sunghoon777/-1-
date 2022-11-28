@@ -18,7 +18,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.Utils;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,7 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.stepbystep.bossapp.DO.Order;
 import com.stepbystep.bossapp.DO.Order_history;
 import com.stepbystep.bossapp.DO.StoreAccount;
-import com.stepbystep.bossapp.DO.UserAccount;
 import com.stepbystep.bossapp.R;
 
 import java.time.LocalDateTime;
@@ -96,6 +94,8 @@ public class MonthChartFragment extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot snapshot1 : snapshot.getChildren()) {  //반복문으로 리스트를 출력함
                                 Order_history order_history = snapshot1.getValue(Order_history.class); // 객체에 데이터를 담는다
+                                if(!(order_history.getOrderState().equals("완료")))
+                                    continue;
                                 order_histories.add(order_history);
                                 LocalDateTime date = StringtoDate.changetodata(order_history.getDate());
                                 switch (date.getMonthValue()) {

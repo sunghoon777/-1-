@@ -8,7 +8,7 @@
     tools:context=".account.AccountFragment" >
 
     <TextView
-        android:id="@+id/fragment_account_textView_name"
+        android:id="@+id/fragment_account_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/myfont2"
@@ -20,7 +20,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/fragment_account_textView_email"
+        android:id="@+id/fragment_account_user_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
