@@ -10,7 +10,7 @@
 <p>https://www.miricanvas.com/v/11logya</p>
 
 <h1>구동 방법</h1>
-소비자용 어플리케이션
-안드로이드 스튜디오 설치 -> FoodTruck Project download -> android studio로 해당 프로젝트 열기 -> 프로젝트 빌드(안드로이드 스튜디오에서 자동으로 됨) -> 디바이스 연결 또는 에뮬레이터 설정 -> 어플리케이션 Run
-사장님용 어플리케이션
-안드로이드 스튜디오 설치 -> BossApp Project download -> android studio로 해당 프로젝트 열기 -> 프로젝트 빌드(안드로이드 스튜디오에서 자동으로 됨) -> 디바이스 연결 또는 에뮬레이터 설정 -> 어플리케이션 Run
+<h2>소비자용 어플리케이션</h2>
+<p>안드로이드 스튜디오 설치 -> FoodTruck Project download -> android studio로 해당 프로젝트 열기 -> 프로젝트 빌드(안드로이드 스튜디오에서 자동으로 됨) -> 디바이스 연결 또는 에뮬레이터 설정 -> 어플리케이션 Run</p>
+<h2>사장님용 어플리케이션</h2>
+<p>안드로이드 스튜디오 설치 -> BossApp Project download -> android studio로 해당 프로젝트 열기 -> 프로젝트 빌드(안드로이드 스튜디오에서 자동으로 됨) -> 디바이스 연결 또는 에뮬레이터 설정 -> 어플리케이션 Run</p>
