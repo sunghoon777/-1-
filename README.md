@@ -3,7 +3,7 @@
 <h1>FoodTrucker 푸드트럭 소바자용  음식 주문 어플리케이션</h1>
 <h2></h2>어플리케이션 화면 이미지</h2>
 <p>어플리케이션 도입 화면</p>
-![IntroductoryActivity](https://github.com/sunghoon777/stepbystep/assets/62196474/a75ba452-6bd8-42c6-a576-6862c154f517)
+https://github.com/sunghoon777/stepbystep/assets/62196474/a75ba452-6bd8-42c6-a576-6862c154f517
 <p>내 주변 푸드트럭 지도 화면</p>
 ![image](https://github.com/sunghoon777/stepbystep/assets/62196474/06b4c5a6-6031-41d4-8452-eaa0793746f1)
 <p>푸드트럭 검색 화면</p>
